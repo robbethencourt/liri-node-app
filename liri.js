@@ -1,6 +1,3 @@
-var keys = require("./keys.js");
-var twitter = require("twitter");
-
 var liri = {
 
 	// store the title for the movies and music functions to pass to those particular functions
@@ -64,7 +61,8 @@ var liri = {
 			// twitter
 			case "my-tweets":
 
-				console.log(user_request);
+				// call the tweets function
+				this.tweets();
 				break;
 
 			// spotify
@@ -96,6 +94,63 @@ var liri = {
 
 	}, // end liriLogic()
 
+	// twitter function
+	tweets: function() {
+
+		// keys to use
+		var keys = require("./keys.js");
+
+		// npm twitter
+		var twitter = require("twitter");
+		
+		// client var to hold twitter keys stored in a file hidden by github thorugh .gitignore
+		var client = new twitter(keys.twitterKeys);
+
+		// object with the twitter username and number of tweets
+		var params = {
+			screen_name: 'rob_bethencourt',
+			count: 20
+		};
+
+		// twitter get method to capture the last 20 tweets and console log them
+		client.get('statuses/user_timeline', params, function(error, tweets, response){
+
+			// if there's an error..
+			if (error) {
+
+				// ...console log the error
+				console.log("An error: " + error);
+
+			} // end if
+
+			// console log the beginning of the twitter section
+			console.log("\nMy Tweets");
+			console.log("------------\n");
+
+			// store teh number of tweets in a variable so this only checks once and not each time through the loop;
+			var num_tweets = tweets.length;
+
+			// declaring the i variable here as I've read it's considered good parctice
+			var i;
+
+			// loop through the tweets
+			for (i = 0; i < num_tweets; i++) {
+
+				// variable to show which tweet number I'm displaying to the console
+				var tweet_num = i + 1;
+
+				// console log the 20 tweets
+				console.log("Tweet " + tweet_num);
+				console.log("Created at: " + tweets[i].created_at);
+				console.log(tweets[i].text);
+				console.log("");
+
+			} // end for loop
+
+		}); // end client.get()
+
+	}, // end tweets()
+
 	// spotify music function
 	music: function(title_to_pass) {
 
@@ -126,13 +181,13 @@ var liri = {
 
 			// console log the details of the movie on each line
 			console.log("\nMusic");
-			console.log("------------")
+			console.log("------------\n")
 			console.log("Artist: " + data.tracks.items[0].artists[0].name);
 			console.log("Song Name: " + data.tracks.items[0].name);
 			console.log("Preview Link: " + data.tracks.items[0].preview_url);
 			console.log("Album: " + data.tracks.items[0].album.name);
 
-		}); // end spotify()
+		}); // end spotify.search()
 
 	}, // end music()
 
@@ -172,7 +227,7 @@ var liri = {
 
 			// console log the details of the movie on each line
 			console.log("\nMovie");
-			console.log("------------")
+			console.log("------------\n")
 			console.log("Title: " + body.Title);
 			console.log("Year: " + body.Year);
 			console.log("IMDB Rating: " + body.imdbRating);
