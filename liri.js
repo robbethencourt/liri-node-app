@@ -9,20 +9,44 @@ var liri = {
 	title: "",
 
 	// concatinate the argumens after the third the user enters
-	liriConcat: function() {
+	liriConcat: function(user_request) {
 
+		switch(user_request) {
+
+			case "spotify-this-song":
+
+				var empty_space = " ";
+				this.theLoop(empty_space);
+				break;
+
+			case "movie-this":
+
+				var plus_sign = "+";
+				this.theLoop(plus_sign);
+				break;
+
+			default:
+
+				break;
+
+		} // end switch
+
+	}, // end liriConcat()
+
+	theLoop: function(char_to_add) {
+		
 		// loop over the arguments entered
 		for (var i = 3; i < process.argv.length; i++) {
 
 			// start adding pluses in between each word (or argument entered)
-			this.title += process.argv[i] + "+";
+			this.title += process.argv[i] + char_to_add;
 
 		} // end for loop
 
 		// reset the title without the last +
 		this.title = this.title.slice(0, -1);
 
-	}, // end liriConcat()
+	},
 
 	liriLogic: function(user_request) {
 		
@@ -38,7 +62,7 @@ var liri = {
 			// spotify
 			case "spotify-this-song":
 
-				console.log(user_request);
+				this.music(this.title);
 				break;
 
 			// online movie database
@@ -63,8 +87,38 @@ var liri = {
 
 	}, // end liriLogic()
 
+	// spotify music function
+	music: function(title_to_pass) {
+
+		console.log(title_to_pass);
+
+		//spotify_string = title_to_pass.replace(/+/g, " ");
+
+		//console.log(spotify_string);
+		
+		spotify.search({ type: 'track', query: title_to_pass }, function(err, data) {
+			
+			// if ther is an error...
+			if (err) {
+
+				// ...console log the error
+				console.log("An error: " + err);
+
+				// return so that nothing else proceeds
+				return;
+
+			} // end if
+
+			console.log(data);
+
+		}); // end spotify()
+
+	}, // end music()
+
 	// omdb movie function
 	movies: function(title_to_pass) {
+
+		console.log(title_to_pass);
 
 		// store the title being searched into a variable
 		var movie_name = title_to_pass;
@@ -82,6 +136,17 @@ var liri = {
 
 		// use the request node module to look up the movie in omdb
 		request(omdb_url, function(err, response, body) {
+
+			// if ther is an error...
+			if (err) {
+
+				// ...console log the error
+				console.log("An error: " + err);
+
+				// return so that nothing else proceeds
+				return;
+
+			} // end if
 			
 			// parse the returned string into a json object
 			body = JSON.parse(body);
@@ -96,7 +161,7 @@ var liri = {
 }; // end liri
 
 // concat the user entered arguments after the third argument
-liri.liriConcat();
+liri.liriConcat(process.argv[2]);
 
 // call the liriLogic method of liri with the third argument being passed
 liri.liriLogic(process.argv[2]);
