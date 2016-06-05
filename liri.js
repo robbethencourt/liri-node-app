@@ -67,8 +67,16 @@ var liri = {
 		// store the title being searched into a variable
 		var movie_name = title_to_pass;
 
+		// checking to see if the user entered anything for the movie title
+		if (movie_name === "") {
+
+			// if they didn't, then use Mr. Nobody as the movie title to pass
+			movie_name = "mr+nobody";
+
+		} // end if
+
 		// store teh omdb url into a variable
-		var omdb_url = 'http://www.omdbapi.com/?t=' + movie_name +'&y=&plot=short&r=json';
+		var omdb_url = 'http://www.omdbapi.com/?t=' + movie_name +'&y=&plot=short&r=json&tomatoes=true';
 
 		// use the request node module to look up the movie in omdb
 		request(omdb_url, function(err, response, body) {
@@ -76,8 +84,8 @@ var liri = {
 			// parse the returned string into a json object
 			body = JSON.parse(body);
 
-			// console log the title
-			console.log(body.Title);
+			// console log the details of the movie on each line
+			console.log(body.Title + "\n" + body.Year + "\n" + body.imdbRating + "\n" + body.Country + "\n" + body.Language + "\n" + body.Plot + "\n" + body.Actors + "\n" + body.tomatoRating + "\n" + body.tomatoURL);
 
 		}); // end request()
 
@@ -90,4 +98,3 @@ liri.liriConcat();
 
 // call the liriLogic method of liri with the third argument being passed
 liri.liriLogic(process.argv[2]);
-
