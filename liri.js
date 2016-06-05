@@ -11,20 +11,30 @@ var liri = {
 	// concatinate the argumens after the third the user enters
 	liriConcat: function(user_request) {
 
+		// if the user wants to seach a...
 		switch(user_request) {
 
+			// ...song we use spotify
 			case "spotify-this-song":
 
+				// create a variable for an empty string
 				var empty_space = " ";
+
+				// call the theLoop function and pass it the empty string
 				this.theLoop(empty_space);
 				break;
 
+			// ...movie we use omdb
 			case "movie-this":
 
+				// create a variable for the + character
 				var plus_sign = "+";
+
+				// call the theLoop function and pass it the + character
 				this.theLoop(plus_sign);
 				break;
 
+			// we want the default to do nothing as there will be other user inputs in the thrid argument that we don't want the liriConcat function doing anything with
 			default:
 
 				break;
@@ -62,6 +72,7 @@ var liri = {
 			// spotify
 			case "spotify-this-song":
 
+				// call the music function and pass the concatinated movie title
 				this.music(this.title);
 				break;
 
@@ -89,13 +100,8 @@ var liri = {
 
 	// spotify music function
 	music: function(title_to_pass) {
-
-		console.log(title_to_pass);
-
-		//spotify_string = title_to_pass.replace(/+/g, " ");
-
-		//console.log(spotify_string);
 		
+		// spotify search method we are passing a track hard coded and the title will be taken from the user's input which is concatinated in the liriConcat function
 		spotify.search({ type: 'track', query: title_to_pass }, function(err, data) {
 			
 			// if ther is an error...
@@ -118,21 +124,16 @@ var liri = {
 	// omdb movie function
 	movies: function(title_to_pass) {
 
-		console.log(title_to_pass);
-
-		// store the title being searched into a variable
-		var movie_name = title_to_pass;
-
 		// checking to see if the user entered anything for the movie title
-		if (movie_name === "") {
+		if (title_to_pass === "") {
 
 			// if they didn't, then use Mr. Nobody as the movie title to pass
-			movie_name = "mr+nobody";
+			title_to_pass = "mr+nobody";
 
 		} // end if
 
-		// store teh omdb url into a variable
-		var omdb_url = 'http://www.omdbapi.com/?t=' + movie_name +'&y=&plot=short&r=json&tomatoes=true';
+		// store teh omdb url into a variable and pass the concatinated title to the omdb url. The title is being concatinated in the liriConcat function.
+		var omdb_url = 'http://www.omdbapi.com/?t=' + title_to_pass +'&y=&plot=short&r=json&tomatoes=true';
 
 		// use the request node module to look up the movie in omdb
 		request(omdb_url, function(err, response, body) {
@@ -160,7 +161,7 @@ var liri = {
 
 }; // end liri
 
-// concat the user entered arguments after the third argument
+// concat the user entered arguments after the third argument, but pass the third argument as the concat methods are different for spotify and omdb
 liri.liriConcat(process.argv[2]);
 
 // call the liriLogic method of liri with the third argument being passed
