@@ -1,8 +1,9 @@
 var keys = require("./keys.js");
+var request = require('request');
 
 var liri = {
 
-	liriLogic: function(user_request) {
+	liriLogic: function(user_request, title) {
 		
 		// pass the user's first argument from their command line input to determine what info will need to be displayed
 		switch(user_request) {
@@ -22,7 +23,7 @@ var liri = {
 			// online movie database
 			case "movie-this":
 
-				console.log(user_request);
+				this.movies(title);
 				break;
 
 			// run what's in the random.txt file
@@ -39,10 +40,21 @@ var liri = {
 
 	},
 
-	movies: function(argument) {
-		// body...
+	movies: function(title_to_pass) {
+
+		var movie_name = title_to_pass;
+
+		var omdb_url = 'http://www.omdbapi.com/?t=' + movie_name +'&y=&plot=short&r=json';
+
+		request(omdb_url, function(err, response, body) {
+			
+			body = JSON.parse(body);
+			console.log(body.Title);
+
+		});
+
 	}
 
 };
 
-liri.liriLogic(process.argv[2]);
+liri.liriLogic(process.argv[2], process.argv[3]);
