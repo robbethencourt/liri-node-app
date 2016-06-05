@@ -1,7 +1,5 @@
 var keys = require("./keys.js");
 var twitter = require("twitter");
-var spotify = require("spotify");
-var request = require("request");
 
 var liri = {
 
@@ -100,6 +98,17 @@ var liri = {
 
 	// spotify music function
 	music: function(title_to_pass) {
+
+		// checking to see if the user entered anything for the music title
+		if (title_to_pass === "") {
+
+			// if they didn't, then use what's my age again by Blink 182 as the title to pass
+			title_to_pass = "what's my age again";
+
+		} // end if
+
+		// npm Spotify
+		var spotify = require("spotify");
 		
 		// spotify search method we are passing a track hard coded and the title will be taken from the user's input which is concatinated in the liriConcat function
 		spotify.search({ type: 'track', query: title_to_pass }, function(err, data) {
@@ -115,7 +124,13 @@ var liri = {
 
 			} // end if
 
-			console.log(data);
+			// console log the details of the movie on each line
+			console.log("\nMusic");
+			console.log("------------")
+			console.log("Artist: " + data.tracks.items[0].artists[0].name);
+			console.log("Song Name: " + data.tracks.items[0].name);
+			console.log("Preview Link: " + data.tracks.items[0].preview_url);
+			console.log("Album: " + data.tracks.items[0].album.name);
 
 		}); // end spotify()
 
@@ -131,6 +146,9 @@ var liri = {
 			title_to_pass = "mr+nobody";
 
 		} // end if
+
+		// npm request
+		var request = require("request");
 
 		// store teh omdb url into a variable and pass the concatinated title to the omdb url. The title is being concatinated in the liriConcat function.
 		var omdb_url = 'http://www.omdbapi.com/?t=' + title_to_pass +'&y=&plot=short&r=json&tomatoes=true';
@@ -153,7 +171,17 @@ var liri = {
 			body = JSON.parse(body);
 
 			// console log the details of the movie on each line
-			console.log(body.Title + "\n" + body.Year + "\n" + body.imdbRating + "\n" + body.Country + "\n" + body.Language + "\n" + body.Plot + "\n" + body.Actors + "\n" + body.tomatoRating + "\n" + body.tomatoURL);
+			console.log("\nMovie");
+			console.log("------------")
+			console.log("Title: " + body.Title);
+			console.log("Year: " + body.Year);
+			console.log("IMDB Rating: " + body.imdbRating);
+			console.log("Country: " + body.Country);
+			console.log("Language: " + body.Language);
+			console.log("Plot: " + body.Plot);
+			console.log("Actors: " + body.Actors);
+			console.log("Rotten Tomato Rating: " + body.tomatoRating);
+			console.log("Rotten Tomato URL: " + body.tomatoURL);
 
 		}); // end request()
 
