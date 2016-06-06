@@ -263,19 +263,20 @@ var liri = {
 
 			} // end if
 
-			console.log(data);
-
+			// store the value of the end of the slice so that we get the text before the comma
 			var end_slice = data.indexOf(",");
 
+			// store the new string that has the command to use in the command variable
 			var command = data.slice(0, end_slice);
 
-			console.log(command);
-
+			// set the beginning value of the next string so that it begins after the first "
 			var start_slice = end_slice + 2;
 
-			var stored_title = data.slice(start_slice, -1);
+			// store the title in random.txt that's in between the "" in the title key for liri so thatt the liriLogic function will have access to it
+			liri.title = data.slice(start_slice, -1);
 
-			console.log(stored_title);
+			// call the liriLogic function and pass in the command for it to use
+			liri.liriLogic(command);
 
 		}); // end fs.reaFile()
 		
