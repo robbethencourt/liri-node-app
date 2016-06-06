@@ -82,7 +82,8 @@ var liri = {
 			// run what's in the random.txt file
 			case "do-what-it-says":
 
-				console.log(user_request);
+				// call the doWhatItSays function
+				this.doWhatItSays();
 				break;
 
 			// default will tell user instructions on how to use the app
@@ -240,7 +241,45 @@ var liri = {
 
 		}); // end request()
 
-	} // end movies()
+	}, // end movies()
+
+	// read the random.txt file and run what it says to
+	doWhatItSays: function() {
+
+		// store the fs npm in a variable to use below
+		var fs = require("fs");
+
+		// us fs to read the random.txt file
+		fs.readFile("random.txt", "utf8", function(err, data) {
+			
+			// if ther is an error...
+			if (err) {
+
+				// ...console log the error
+				console.log("An error: " + err);
+
+				// return so that nothing else proceeds
+				return;
+
+			} // end if
+
+			console.log(data);
+
+			var end_slice = data.indexOf(",");
+
+			var command = data.slice(0, end_slice);
+
+			console.log(command);
+
+			var start_slice = end_slice + 2;
+
+			var stored_title = data.slice(start_slice, -1);
+
+			console.log(stored_title);
+
+		}); // end fs.reaFile()
+		
+	} // end doWhatItSays()
 
 }; // end liri
 
