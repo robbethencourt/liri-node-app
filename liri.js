@@ -82,7 +82,8 @@ var liri = {
 			// run what's in the random.txt file
 			case "do-what-it-says":
 
-				console.log(user_request);
+				// call the doWhatItSays function
+				this.doWhatItSays();
 				break;
 
 			// default will tell user instructions on how to use the app
@@ -240,7 +241,46 @@ var liri = {
 
 		}); // end request()
 
-	} // end movies()
+	}, // end movies()
+
+	// read the random.txt file and run what it says to
+	doWhatItSays: function() {
+
+		// store the fs npm in a variable to use below
+		var fs = require("fs");
+
+		// us fs to read the random.txt file
+		fs.readFile("random.txt", "utf8", function(err, data) {
+			
+			// if ther is an error...
+			if (err) {
+
+				// ...console log the error
+				console.log("An error: " + err);
+
+				// return so that nothing else proceeds
+				return;
+
+			} // end if
+
+			// store the value of the end of the slice so that we get the text before the comma
+			var end_slice = data.indexOf(",");
+
+			// store the new string that has the command to use in the command variable
+			var command = data.slice(0, end_slice);
+
+			// set the beginning value of the next string so that it begins after the first "
+			var start_slice = end_slice + 2;
+
+			// store the title in random.txt that's in between the "" in the title key for liri so thatt the liriLogic function will have access to it
+			liri.title = data.slice(start_slice, -1);
+
+			// call the liriLogic function and pass in the command for it to use
+			liri.liriLogic(command);
+
+		}); // end fs.reaFile()
+		
+	} // end doWhatItSays()
 
 }; // end liri
 
