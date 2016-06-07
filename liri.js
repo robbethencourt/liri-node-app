@@ -3,6 +3,9 @@ var liri = {
 	// store the title for the movies and music functions to pass to those particular functions
 	title: "",
 
+	// store the fs npm
+	fs: require("fs"),
+
 	// concatinate the argumens after the third the user enters
 	liriConcat: function(user_request) {
 
@@ -125,10 +128,6 @@ var liri = {
 
 			} // end if
 
-			// console log the beginning of the twitter section
-			console.log("\nMy Tweets");
-			console.log("------------\n");
-
 			// store teh number of tweets in a variable so this only checks once and not each time through the loop;
 			var num_tweets = tweets.length;
 
@@ -182,8 +181,6 @@ var liri = {
 			} // end if
 
 			// console log the details of the movie on each line
-			console.log("\nMusic");
-			console.log("------------\n")
 			console.log("Artist: " + data.tracks.items[0].artists[0].name);
 			console.log("Song Name: " + data.tracks.items[0].name);
 			console.log("Preview Link: " + data.tracks.items[0].preview_url);
@@ -227,10 +224,6 @@ var liri = {
 			// parse the returned string into a json object
 			body = JSON.parse(body);
 
-			// console log the details of the movie on each line
-			console.log("\n\nMovie");
-			console.log("------------\n")
-
 			// store the movie details in an object
 			var movie_object = {
 
@@ -254,6 +247,8 @@ var liri = {
 
 			} // end for loop
 
+			liri.logOutput(movie_object);
+
 		}); // end request()
 
 	}, // end movies()
@@ -261,11 +256,8 @@ var liri = {
 	// read the random.txt file and run what it says to
 	doWhatItSays: function() {
 
-		// store the fs npm in a variable to use below
-		var fs = require("fs");
-
 		// us fs to read the random.txt file
-		fs.readFile("random.txt", "utf8", function(err, data) {
+		this.fs.readFile("random.txt", "utf8", function(err, data) {
 			
 			// if ther is an error...
 			if (err) {
@@ -299,7 +291,20 @@ var liri = {
 
 	logOutput: function(object_to_log) {
 
-		
+		this.fs.appendFile("log.txt", JSON.stringify(object_to_log), function(err) {
+
+			// if ther is an error...
+			if (err) {
+
+				// ...console log the error
+				console.log("An error: " + err);
+
+				// return so that nothing else proceeds
+				return;
+
+			} // end if
+
+		});
 
 	} // end logOutput()
 
@@ -310,5 +315,3 @@ liri.liriConcat(process.argv[2]);
 
 // call the liriLogic method of liri with the third argument being passed
 liri.liriLogic(process.argv[2]);
-
-console.log(liri);
