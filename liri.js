@@ -180,11 +180,26 @@ var liri = {
 
 			} // end if
 
-			// console log the details of the movie on each line
-			console.log("Artist: " + data.tracks.items[0].artists[0].name);
-			console.log("Song Name: " + data.tracks.items[0].name);
-			console.log("Preview Link: " + data.tracks.items[0].preview_url);
-			console.log("Album: " + data.tracks.items[0].album.name);
+			// store the movie details in an object
+			var music_object = {
+
+				Artist: data.tracks.items[0].artists[0].name,
+				"Song Name": data.tracks.items[0].name,
+				"Preview Link": data.tracks.items[0].preview_url,
+				"Album": data.tracks.items[0].album.name
+
+			} // end music_object
+
+			// loop through the object and display details to console
+			for (var key in music_object) {
+
+				// console log each key and value
+				console.log(key + ": " + music_object[key]);
+
+			} // end for loop
+
+			// call the logOutput function and pass the music object so that it saves to log.txt
+			liri.logOutput(music_object);
 
 		}); // end spotify.search()
 
@@ -247,6 +262,7 @@ var liri = {
 
 			} // end for loop
 
+			// call the logOutput function and pass the movie object so that it saves to log.txt
 			liri.logOutput(movie_object);
 
 		}); // end request()
@@ -291,7 +307,7 @@ var liri = {
 
 	logOutput: function(object_to_log) {
 
-		this.fs.appendFile("log.txt", JSON.stringify(object_to_log), function(err) {
+		this.fs.appendFile("log.txt", "\n" + JSON.stringify(object_to_log), function(err) {
 
 			// if ther is an error...
 			if (err) {
