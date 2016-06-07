@@ -6,57 +6,6 @@ var liri = {
 	// store the fs npm
 	fs: require("fs"),
 
-	// concatinate the argumens after the third the user enters
-	liriConcat: function(user_request) {
-
-		// if the user wants to seach a...
-		switch(user_request) {
-
-			// ...song we use spotify
-			case "spotify-this-song":
-
-				// create a variable for an empty string
-				var empty_space = " ";
-
-				// call the theLoop function and pass it the empty string
-				this.theLoop(empty_space);
-				break;
-
-			// ...movie we use omdb
-			case "movie-this":
-
-				// create a variable for the + character
-				var plus_sign = "+";
-
-				// call the theLoop function and pass it the + character
-				this.theLoop(plus_sign);
-				break;
-
-			// we want the default to do nothing as there will be other user inputs in the thrid argument that we don't want the liriConcat function doing anything with
-			default:
-
-				break;
-
-		} // end switch
-
-	}, // end liriConcat()
-
-	// function that loops over the arguments entered by the user after the argument entered for the command and adds the necessary characters (+ for omdb and an empty space for spotify)
-	theLoop: function(char_to_add) {
-		
-		// loop over the arguments entered
-		for (var i = 3; i < process.argv.length; i++) {
-
-			// start adding pluses in between each word (or argument entered)
-			this.title += process.argv[i] + char_to_add;
-
-		} // end for loop
-
-		// reset the title without the last +
-		this.title = this.title.slice(0, -1);
-
-	}, // end theLoop()
-
 	liriLogic: function(user_request) {
 		
 		// pass the user's first argument from their command line input to determine what info will need to be displayed
@@ -72,12 +21,24 @@ var liri = {
 			// spotify
 			case "spotify-this-song":
 
+				// create a variable for an empty string
+				var empty_space = " ";
+
+				// call the liriConcat function and pass it the empty string
+				this.liriConcat(empty_space);
+
 				// call the music function and pass the concatinated movie title
 				this.music(this.title);
 				break;
 
 			// online movie database
 			case "movie-this":
+
+				// create a variable for the + character
+				var plus_sign = "+";
+
+				// call the liriConcat function and pass it the + character
+				this.liriConcat(plus_sign);
 
 				// call the movies function and pass the concatinated movie title
 				this.movies(this.title);
@@ -98,6 +59,22 @@ var liri = {
 		} // end switch
 
 	}, // end liriLogic()
+
+	// function that loops over the arguments entered by the user after the argument entered for the command and adds the necessary characters (+ for omdb and an empty space for spotify)
+	liriConcat: function(char_to_add) {
+		
+		// loop over the arguments entered
+		for (var i = 3; i < process.argv.length; i++) {
+
+			// start adding pluses in between each word (or argument entered)
+			this.title += process.argv[i] + char_to_add;
+
+		} // end for loop
+
+		// reset the title without the last +
+		this.title = this.title.slice(0, -1);
+
+	}, // end liriConcat()
 
 	// twitter function
 	tweets: function() {
@@ -280,7 +257,7 @@ var liri = {
 	// read the random.txt file and run what it says to
 	doWhatItSays: function() {
 
-		// us fs to read the random.txt file
+		// use fs to read the random.txt file
 		this.fs.readFile("random.txt", "utf8", function(err, data) {
 			
 			// if ther is an error...
@@ -329,6 +306,7 @@ var liri = {
 	// function that saves the details to the log.txt file
 	logOutput: function(object_to_log) {
 
+		// use fs to append the object to the log.txt file
 		this.fs.appendFile("log.txt", "\n" + JSON.stringify(object_to_log), function(err) {
 
 			// if ther is an error...
@@ -347,9 +325,6 @@ var liri = {
 	} // end logOutput()
 
 }; // end liri
-
-// concat the user entered arguments after the third argument, but pass the third argument as the concat methods are different for spotify and omdb
-liri.liriConcat(process.argv[2]);
 
 // call the liriLogic method of liri with the third argument being passed
 liri.liriLogic(process.argv[2]);
