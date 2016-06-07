@@ -140,11 +140,23 @@ var liri = {
 				// variable to show which tweet number I'm displaying to the console
 				var tweet_num = i + 1;
 
-				// console log the 20 tweets
-				console.log("Tweet " + tweet_num);
-				console.log("Created at: " + tweets[i].created_at);
-				console.log(tweets[i].text);
+				// store the tweet details in an object
+				var tweet_object = {
+
+					"Tweet Number": tweet_num,
+					"Created at": tweets[i].created_at,
+					Tweet: tweets[i].text
+
+				} // end tweet_object
+
+				// call the consoleLogObject and pass the movie object to display
+				liri.consoleLogObject(tweet_object);
+
+				// line break for legibility on the console
 				console.log("");
+
+				// call the logOutput function and pass the tweet object so that it saves to log.txt
+				liri.logOutput(tweet_object);
 
 			} // end for loop
 
@@ -190,13 +202,11 @@ var liri = {
 
 			} // end music_object
 
-			// loop through the object and display details to console
-			for (var key in music_object) {
+			// line break for legibility on the console
+			console.log("");
 
-				// console log each key and value
-				console.log(key + ": " + music_object[key]);
-
-			} // end for loop
+			// call the consoleLogObject and pass the movie object to display
+			liri.consoleLogObject(music_object);
 
 			// call the logOutput function and pass the music object so that it saves to log.txt
 			liri.logOutput(music_object);
@@ -254,13 +264,11 @@ var liri = {
 
 			} // end movie_object
 
-			// loop through the object and display details to console
-			for (var key in movie_object) {
+			// line break for legibility on the console
+			console.log("");
 
-				// console log each key and value
-				console.log(key + ": " + movie_object[key]);
-
-			} // end for loop
+			// call the consoleLogObject and pass the movie object to display
+			liri.consoleLogObject(movie_object);
 
 			// call the logOutput function and pass the movie object so that it saves to log.txt
 			liri.logOutput(movie_object);
@@ -301,10 +309,24 @@ var liri = {
 			// call the liriLogic function and pass in the command for it to use
 			liri.liriLogic(command);
 
-		}); // end fs.reaFile()
+		}); // end this.fs.reaFile()
 		
 	}, // end doWhatItSays()
 
+	// function that displays the deatils to the console
+	consoleLogObject: function(object_to_console) {
+
+		// loop through the object and display details to console
+		for (var key in object_to_console) {
+
+			// console log each key and value
+			console.log(key + ": " + object_to_console[key]);
+
+		} // end for loop
+
+	}, // end consoleLogObject()
+
+	// function that saves the details to the log.txt file
 	logOutput: function(object_to_log) {
 
 		this.fs.appendFile("log.txt", "\n" + JSON.stringify(object_to_log), function(err) {
@@ -320,7 +342,7 @@ var liri = {
 
 			} // end if
 
-		});
+		}); // end this.fs.appendFile()
 
 	} // end logOutput()
 

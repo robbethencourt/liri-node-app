@@ -2,3 +2,47 @@
 {"Title":"A Nightmare on Elm Street","Year":"1984","IMDB Raging":"7.5","Country":"USA","Language":"English","Plot":"Several people are hunted by a cruel serial killer who kills his victims in their dreams. While the survivors are trying to find the reason for being chosen, the murderer won't lose any chance to kill them as soon as they fall asleep.","Actors":"John Saxon, Ronee Blakley, Heather Langenkamp, Amanda Wyss","Rotten Tomato Rating":"7.7","Rotten Tomato URL":"http://www.rottentomatoes.com/m/nightmare_on_elm_street/"}
 {"Artist":"Frank Sinatra","Song Name":"Fly Me To The Moon","Preview Link":"https://p.scdn.co/mp3-preview/86f12dba1a099a8722bae48d9fab48deeff3fa83","Album":"Ultimate Sinatra"}
 {"Artist":"Nirvana","Song Name":"(New Wave) Polly - BBC Mark Goodier Session","Preview Link":"https://p.scdn.co/mp3-preview/894b804848c48aa70a43bdff32fedc0de4518013","Album":"Incesticide"}
+{"Tweet Number":1,"Created at":"Sun May 22 03:25:40 +0000 2016","Tweet":"RT @bobfreelander: Do yourself a favor &amp; see THE NICE GUYS this weekend. We need more great movies like this. Vote with your dollars! https…"}
+{"Tweet Number":2,"Created at":"Sat May 21 20:28:24 +0000 2016","Tweet":"@gavinth0rne just watched this about a month ago and found it just as entertaining. The score is great. #Verhoeven8797"}
+{"Tweet Number":3,"Created at":"Wed May 18 23:39:36 +0000 2016","Tweet":"@duelinmarkers hopefully that wasn't the monkey business crew shirt"}
+{"Tweet Number":4,"Created at":"Sat Apr 30 04:41:21 +0000 2016","Tweet":"Imogen https://t.co/moNm2biAJs"}
+{"Tweet Number":5,"Created at":"Thu Apr 28 15:45:54 +0000 2016","Tweet":"Misplaced → New York https://t.co/Ur7FNGok3J"}
+{"Tweet Number":6,"Created at":"Fri Apr 22 21:57:04 +0000 2016","Tweet":"RT @scottEweinberg: Another one I like. People send me Alien stuff constantly. http://t.co/iCIGaKOeZO"}
+{"Tweet Number":7,"Created at":"Sat Apr 02 16:48:34 +0000 2016","Tweet":"RT @glamourmag: Wait...should we be eating the avocado seed?! Why one blogger thinks so: https://t.co/lHH23dAOnT https://t.co/gDgadLRGgN"}
+{"Tweet Number":8,"Created at":"Sat Apr 02 12:15:29 +0000 2016","Tweet":"RT @CFLSports: We can't wait to bring events to the facility...USTA's Lake Nona campus sports 'smart courts,' Italian clay https://t.co/qrD…"}
+{"Tweet Number":9,"Created at":"Tue Mar 22 18:57:38 +0000 2016","Tweet":"RT @leangreendad: New #vegan restaurant in orlando @marketonsouth insider look! #sloppyjoe https://t.co/AXRcXp1zNf https://t.co/hxLnSLzqua"}
+{"Tweet Number":10,"Created at":"Tue Mar 22 18:47:44 +0000 2016","Tweet":"RT @duelinmarkers: Very interesting: organic powdered sugar is like a whole different ingredient. https://t.co/3jZ2ti4bP2"}
+{"Tweet Number":11,"Created at":"Wed Feb 24 00:39:50 +0000 2016","Tweet":"RT @PilatesBoutique: New Recipe! https://t.co/AG7DNzUlkV #cleaneating #healthychoices #yummy"}
+{"Tweet Number":12,"Created at":"Wed Feb 03 01:01:48 +0000 2016","Tweet":"RT @PilatesBoutique: My 1st blog post of 2016😃 Enjoy! #pilates #smallchanges  https://t.co/zgXzegPTtU"}
+{"Tweet Number":13,"Created at":"Sun Jan 31 04:21:53 +0000 2016","Tweet":"If u go Laura brannigan jukebox warrior and someone goes Madonna, I get it, but they really need to go pat benatar"}
+{"Tweet Number":14,"Created at":"Fri Jan 29 18:54:17 +0000 2016","Tweet":"RT @LakeNonaInsider: More on the Lions move to Nona...... https://t.co/fdkuvJoqzl"}
+{"Tweet Number":15,"Created at":"Sun Jan 10 09:29:45 +0000 2016","Tweet":"@jorel1279 @netflix @TWOSTEPFILM more of a film noir, but a horror fan would total enjoy as well. The poster does look rather horrific!"}
+{"Tweet Number":16,"Created at":"Sun Jan 10 01:17:59 +0000 2016","Tweet":"This is steaming on @Netflix and is totally worth watching @TWOSTEPFILM https://t.co/g4FI0uzx3a"}
+{"Tweet Number":17,"Created at":"Sat Jan 02 22:16:34 +0000 2016","Tweet":"RT @TheFilmStage: The Film Stage’s Top 50 Films of 2015 https://t.co/XR2b8gVA8h https://t.co/r4t9GHo0gz"}
+{"Tweet Number":18,"Created at":"Sun Dec 27 20:41:06 +0000 2015","Tweet":"70mm @thehatefuleight can't wait"}
+{"Tweet Number":19,"Created at":"Wed Dec 16 22:17:20 +0000 2015","Tweet":"RT @PilatesBoutique: Thieves following @ups trucks in residential neighborhoods totally suck @UPSHelp"}
+{"Tweet Number":20,"Created at":"Sat Dec 12 02:53:44 +0000 2015","Tweet":"@PilatesBoutique https://t.co/FDnmzamSE2"}
+{"Title":"The Shining","Year":"1980","IMDB Raging":"8.4","Country":"USA, UK","Language":"English","Plot":"A family heads to an isolated hotel for the winter where an evil and spiritual presence influences the father into violence, while his psychic son sees horrific forebodings from the past and of the future.","Actors":"Jack Nicholson, Shelley Duvall, Danny Lloyd, Scatman Crothers","Rotten Tomato Rating":"8.5","Rotten Tomato URL":"http://www.rottentomatoes.com/m/shining/"}
+{"Artist":"A.M.P.","Song Name":"Purple Rain (58 BPM)","Preview Link":"https://p.scdn.co/mp3-preview/afd695f5854d44648be77463237a68b06b5c2ff1","Album":"Aerobics! 2 Hours of Best Workout Music"}
+{"Title":"Gymkata","Year":"1985","IMDB Raging":"4.1","Country":"USA, Japan","Language":"English","Plot":"Johnathan Cabot is a champion gymnast. In the tiny, yet savage, country of Parmistan, there is a perfect spot for a \"star wars\" site. For the US to get this site, they must compete in the ...","Actors":"Kurt Thomas, Tetchie Agbayani, Richard Norton, Edward Bell","Rotten Tomato Rating":"2.6","Rotten Tomato URL":"http://www.rottentomatoes.com/m/gymkata/"}
+{"Artist":"Backstreet Boys","Song Name":"I Want It That Way","Preview Link":"https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6","Album":"The Hits--Chapter One"}
+{"Tweet Number":1,"Created at":"Sun May 22 03:25:40 +0000 2016","Tweet":"RT @bobfreelander: Do yourself a favor &amp; see THE NICE GUYS this weekend. We need more great movies like this. Vote with your dollars! https…"}
+{"Tweet Number":2,"Created at":"Sat May 21 20:28:24 +0000 2016","Tweet":"@gavinth0rne just watched this about a month ago and found it just as entertaining. The score is great. #Verhoeven8797"}
+{"Tweet Number":3,"Created at":"Wed May 18 23:39:36 +0000 2016","Tweet":"@duelinmarkers hopefully that wasn't the monkey business crew shirt"}
+{"Tweet Number":4,"Created at":"Sat Apr 30 04:41:21 +0000 2016","Tweet":"Imogen https://t.co/moNm2biAJs"}
+{"Tweet Number":5,"Created at":"Thu Apr 28 15:45:54 +0000 2016","Tweet":"Misplaced → New York https://t.co/Ur7FNGok3J"}
+{"Tweet Number":6,"Created at":"Fri Apr 22 21:57:04 +0000 2016","Tweet":"RT @scottEweinberg: Another one I like. People send me Alien stuff constantly. http://t.co/iCIGaKOeZO"}
+{"Tweet Number":7,"Created at":"Sat Apr 02 16:48:34 +0000 2016","Tweet":"RT @glamourmag: Wait...should we be eating the avocado seed?! Why one blogger thinks so: https://t.co/lHH23dAOnT https://t.co/gDgadLRGgN"}
+{"Tweet Number":8,"Created at":"Sat Apr 02 12:15:29 +0000 2016","Tweet":"RT @CFLSports: We can't wait to bring events to the facility...USTA's Lake Nona campus sports 'smart courts,' Italian clay https://t.co/qrD…"}
+{"Tweet Number":9,"Created at":"Tue Mar 22 18:57:38 +0000 2016","Tweet":"RT @leangreendad: New #vegan restaurant in orlando @marketonsouth insider look! #sloppyjoe https://t.co/AXRcXp1zNf https://t.co/hxLnSLzqua"}
+{"Tweet Number":10,"Created at":"Tue Mar 22 18:47:44 +0000 2016","Tweet":"RT @duelinmarkers: Very interesting: organic powdered sugar is like a whole different ingredient. https://t.co/3jZ2ti4bP2"}
+{"Tweet Number":11,"Created at":"Wed Feb 24 00:39:50 +0000 2016","Tweet":"RT @PilatesBoutique: New Recipe! https://t.co/AG7DNzUlkV #cleaneating #healthychoices #yummy"}
+{"Tweet Number":12,"Created at":"Wed Feb 03 01:01:48 +0000 2016","Tweet":"RT @PilatesBoutique: My 1st blog post of 2016😃 Enjoy! #pilates #smallchanges  https://t.co/zgXzegPTtU"}
+{"Tweet Number":13,"Created at":"Sun Jan 31 04:21:53 +0000 2016","Tweet":"If u go Laura brannigan jukebox warrior and someone goes Madonna, I get it, but they really need to go pat benatar"}
+{"Tweet Number":14,"Created at":"Fri Jan 29 18:54:17 +0000 2016","Tweet":"RT @LakeNonaInsider: More on the Lions move to Nona...... https://t.co/fdkuvJoqzl"}
+{"Tweet Number":15,"Created at":"Sun Jan 10 09:29:45 +0000 2016","Tweet":"@jorel1279 @netflix @TWOSTEPFILM more of a film noir, but a horror fan would total enjoy as well. The poster does look rather horrific!"}
+{"Tweet Number":16,"Created at":"Sun Jan 10 01:17:59 +0000 2016","Tweet":"This is steaming on @Netflix and is totally worth watching @TWOSTEPFILM https://t.co/g4FI0uzx3a"}
+{"Tweet Number":17,"Created at":"Sat Jan 02 22:16:34 +0000 2016","Tweet":"RT @TheFilmStage: The Film Stage’s Top 50 Films of 2015 https://t.co/XR2b8gVA8h https://t.co/r4t9GHo0gz"}
+{"Tweet Number":18,"Created at":"Sun Dec 27 20:41:06 +0000 2015","Tweet":"70mm @thehatefuleight can't wait"}
+{"Tweet Number":19,"Created at":"Wed Dec 16 22:17:20 +0000 2015","Tweet":"RT @PilatesBoutique: Thieves following @ups trucks in residential neighborhoods totally suck @UPSHelp"}
+{"Tweet Number":20,"Created at":"Sat Dec 12 02:53:44 +0000 2015","Tweet":"@PilatesBoutique https://t.co/FDnmzamSE2"}
