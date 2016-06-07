@@ -3,6 +3,9 @@ var liri = {
 	// store the title for the movies and music functions to pass to those particular functions
 	title: "",
 
+	// store the fs npm
+	fs: require("fs"),
+
 	// concatinate the argumens after the third the user enters
 	liriConcat: function(user_request) {
 
@@ -38,6 +41,7 @@ var liri = {
 
 	}, // end liriConcat()
 
+	// function that loops over the arguments entered by the user after the argument entered for the command and adds the necessary characters (+ for omdb and an empty space for spotify)
 	theLoop: function(char_to_add) {
 		
 		// loop over the arguments entered
@@ -51,7 +55,7 @@ var liri = {
 		// reset the title without the last +
 		this.title = this.title.slice(0, -1);
 
-	},
+	}, // end theLoop()
 
 	liriLogic: function(user_request) {
 		
@@ -91,7 +95,7 @@ var liri = {
 
 				console.log("Woops! I'm looking for these possible arguments first, 'my-tweets', 'spotify-this-song', 'movie-this', 'do-what-it-says'.")
 
-		}
+		} // end switch
 
 	}, // end liriLogic()
 
@@ -124,10 +128,6 @@ var liri = {
 
 			} // end if
 
-			// console log the beginning of the twitter section
-			console.log("\nMy Tweets");
-			console.log("------------\n");
-
 			// store teh number of tweets in a variable so this only checks once and not each time through the loop;
 			var num_tweets = tweets.length;
 
@@ -140,11 +140,23 @@ var liri = {
 				// variable to show which tweet number I'm displaying to the console
 				var tweet_num = i + 1;
 
-				// console log the 20 tweets
-				console.log("Tweet " + tweet_num);
-				console.log("Created at: " + tweets[i].created_at);
-				console.log(tweets[i].text);
+				// store the tweet details in an object
+				var tweet_object = {
+
+					"Tweet Number": tweet_num,
+					"Created at": tweets[i].created_at,
+					Tweet: tweets[i].text
+
+				} // end tweet_object
+
+				// call the consoleLogObject and pass the movie object to display
+				liri.consoleLogObject(tweet_object);
+
+				// line break for legibility on the console
 				console.log("");
+
+				// call the logOutput function and pass the tweet object so that it saves to log.txt
+				liri.logOutput(tweet_object);
 
 			} // end for loop
 
@@ -180,13 +192,24 @@ var liri = {
 
 			} // end if
 
-			// console log the details of the movie on each line
-			console.log("\nMusic");
-			console.log("------------\n")
-			console.log("Artist: " + data.tracks.items[0].artists[0].name);
-			console.log("Song Name: " + data.tracks.items[0].name);
-			console.log("Preview Link: " + data.tracks.items[0].preview_url);
-			console.log("Album: " + data.tracks.items[0].album.name);
+			// store the movie details in an object
+			var music_object = {
+
+				Artist: data.tracks.items[0].artists[0].name,
+				"Song Name": data.tracks.items[0].name,
+				"Preview Link": data.tracks.items[0].preview_url,
+				"Album": data.tracks.items[0].album.name
+
+			} // end music_object
+
+			// line break for legibility on the console
+			console.log("");
+
+			// call the consoleLogObject and pass the movie object to display
+			liri.consoleLogObject(music_object);
+
+			// call the logOutput function and pass the music object so that it saves to log.txt
+			liri.logOutput(music_object);
 
 		}); // end spotify.search()
 
@@ -226,18 +249,29 @@ var liri = {
 			// parse the returned string into a json object
 			body = JSON.parse(body);
 
-			// console log the details of the movie on each line
-			console.log("\nMovie");
-			console.log("------------\n")
-			console.log("Title: " + body.Title);
-			console.log("Year: " + body.Year);
-			console.log("IMDB Rating: " + body.imdbRating);
-			console.log("Country: " + body.Country);
-			console.log("Language: " + body.Language);
-			console.log("Plot: " + body.Plot);
-			console.log("Actors: " + body.Actors);
-			console.log("Rotten Tomato Rating: " + body.tomatoRating);
-			console.log("Rotten Tomato URL: " + body.tomatoURL);
+			// store the movie details in an object
+			var movie_object = {
+
+				Title: body.Title,
+				Year: body.Year,
+				"IMDB Raging": body.imdbRating,
+				Country: body.Country,
+				Language: body.Language,
+				Plot: body.Plot,
+				Actors: body.Actors,
+				"Rotten Tomato Rating": body.tomatoRating,
+				"Rotten Tomato URL": body.tomatoURL 
+
+			} // end movie_object
+
+			// line break for legibility on the console
+			console.log("");
+
+			// call the consoleLogObject and pass the movie object to display
+			liri.consoleLogObject(movie_object);
+
+			// call the logOutput function and pass the movie object so that it saves to log.txt
+			liri.logOutput(movie_object);
 
 		}); // end request()
 
@@ -246,11 +280,8 @@ var liri = {
 	// read the random.txt file and run what it says to
 	doWhatItSays: function() {
 
-		// store the fs npm in a variable to use below
-		var fs = require("fs");
-
 		// us fs to read the random.txt file
-		fs.readFile("random.txt", "utf8", function(err, data) {
+		this.fs.readFile("random.txt", "utf8", function(err, data) {
 			
 			// if ther is an error...
 			if (err) {
@@ -278,9 +309,42 @@ var liri = {
 			// call the liriLogic function and pass in the command for it to use
 			liri.liriLogic(command);
 
-		}); // end fs.reaFile()
+		}); // end this.fs.reaFile()
 		
-	} // end doWhatItSays()
+	}, // end doWhatItSays()
+
+	// function that displays the deatils to the console
+	consoleLogObject: function(object_to_console) {
+
+		// loop through the object and display details to console
+		for (var key in object_to_console) {
+
+			// console log each key and value
+			console.log(key + ": " + object_to_console[key]);
+
+		} // end for loop
+
+	}, // end consoleLogObject()
+
+	// function that saves the details to the log.txt file
+	logOutput: function(object_to_log) {
+
+		this.fs.appendFile("log.txt", "\n" + JSON.stringify(object_to_log), function(err) {
+
+			// if ther is an error...
+			if (err) {
+
+				// ...console log the error
+				console.log("An error: " + err);
+
+				// return so that nothing else proceeds
+				return;
+
+			} // end if
+
+		}); // end this.fs.appendFile()
+
+	} // end logOutput()
 
 }; // end liri
 
