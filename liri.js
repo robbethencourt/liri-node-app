@@ -38,6 +38,7 @@ var liri = {
 
 	}, // end liriConcat()
 
+	// function that loops over the arguments entered by the user after the argument entered for the command and adds the necessary characters (+ for omdb and an empty space for spotify)
 	theLoop: function(char_to_add) {
 		
 		// loop over the arguments entered
@@ -51,7 +52,7 @@ var liri = {
 		// reset the title without the last +
 		this.title = this.title.slice(0, -1);
 
-	},
+	}, // end theLoop()
 
 	liriLogic: function(user_request) {
 		
@@ -91,7 +92,7 @@ var liri = {
 
 				console.log("Woops! I'm looking for these possible arguments first, 'my-tweets', 'spotify-this-song', 'movie-this', 'do-what-it-says'.")
 
-		}
+		} // end switch
 
 	}, // end liriLogic()
 
@@ -227,17 +228,31 @@ var liri = {
 			body = JSON.parse(body);
 
 			// console log the details of the movie on each line
-			console.log("\nMovie");
+			console.log("\n\nMovie");
 			console.log("------------\n")
-			console.log("Title: " + body.Title);
-			console.log("Year: " + body.Year);
-			console.log("IMDB Rating: " + body.imdbRating);
-			console.log("Country: " + body.Country);
-			console.log("Language: " + body.Language);
-			console.log("Plot: " + body.Plot);
-			console.log("Actors: " + body.Actors);
-			console.log("Rotten Tomato Rating: " + body.tomatoRating);
-			console.log("Rotten Tomato URL: " + body.tomatoURL);
+
+			// store the movie details in an object
+			var movie_object = {
+
+				Title: body.Title,
+				Year: body.Year,
+				"IMDB Raging": body.imdbRating,
+				Country: body.Country,
+				Language: body.Language,
+				Plot: body.Plot,
+				Actors: body.Actors,
+				"Rotten Tomato Rating": body.tomatoRating,
+				"Rotten Tomato URL": body.tomatoURL 
+
+			} // end movie_object
+
+			// loop through the object and display details to console
+			for (var key in movie_object) {
+
+				// console log each key and value
+				console.log(key + ": " + movie_object[key]);
+
+			} // end for loop
 
 		}); // end request()
 
@@ -280,7 +295,13 @@ var liri = {
 
 		}); // end fs.reaFile()
 		
-	} // end doWhatItSays()
+	}, // end doWhatItSays()
+
+	logOutput: function(object_to_log) {
+
+		
+
+	} // end logOutput()
 
 }; // end liri
 
@@ -289,3 +310,5 @@ liri.liriConcat(process.argv[2]);
 
 // call the liriLogic method of liri with the third argument being passed
 liri.liriLogic(process.argv[2]);
+
+console.log(liri);
