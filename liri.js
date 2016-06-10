@@ -6,7 +6,7 @@ var liri = {
 	// store the fs npm
 	fs: require("fs"),
 
-	liriLogic: function(user_request) {
+	liriLogic: function(user_request, do_what_it_says) {
 		
 		// pass the user's first argument from their command line input to determine what info will need to be displayed
 		switch(user_request) {
@@ -21,11 +21,16 @@ var liri = {
 			// spotify
 			case "spotify-this-song":
 
-				// create a variable for an empty string
-				var empty_space = " ";
+				// if there is no second argument, which would come from the this.doWhatItSays function
+				if (do_what_it_says === undefined) {
 
-				// call the liriConcat function and pass it the empty string
-				this.liriConcat(empty_space);
+					// create a variable for an empty string
+					var empty_space = " ";
+
+					// call the liriConcat function and pass it the empty string
+					this.liriConcat(empty_space);
+
+				} // end if
 
 				// call the music function and pass the concatinated movie title
 				this.music(this.title);
@@ -62,17 +67,12 @@ var liri = {
 
 	// function that loops over the arguments entered by the user after the argument entered for the command and adds the necessary characters (+ for omdb and an empty space for spotify)
 	liriConcat: function(char_to_add) {
-		
-		// loop over the arguments entered
-		for (var i = 3; i < process.argv.length; i++) {
 
-			// start adding pluses in between each word (or argument entered)
-			this.title += process.argv[i] + char_to_add;
+		// store the user entered arguments in a variable
+		var args = process.argv;
 
-		} // end for loop
-
-		// reset the title without the last +
-		this.title = this.title.slice(0, -1);
+		// store the arguments after 2 in the this.title key. Use the char to add, which can be either a + for the movie search or a blank space for the spotify search to join the strings correctly for the appropriate search
+		this.title = args.slice(3).join(char_to_add);
 
 	}, // end liriConcat()
 
@@ -105,7 +105,7 @@ var liri = {
 
 			} // end if
 
-			// store teh number of tweets in a variable so this only checks once and not each time through the loop;
+			// store the number of tweets in a variable so this only checks once and not each time through the loop;
 			var num_tweets = tweets.length;
 
 			// declaring the i variable here as I've read it's considered good parctice
@@ -283,8 +283,8 @@ var liri = {
 			// store the title in random.txt that's in between the "" in the title key for liri so thatt the liriLogic function will have access to it
 			liri.title = data.slice(start_slice, -1);
 
-			// call the liriLogic function and pass in the command for it to use
-			liri.liriLogic(command);
+			// call the liriLogic function and pass in the command for it to use as well as the title so that the liriLogic function knows not to concatenate a string as it does for when the title is given by the user's input
+			liri.liriLogic(command, liri.title);
 
 		}); // end this.fs.reaFile()
 		
